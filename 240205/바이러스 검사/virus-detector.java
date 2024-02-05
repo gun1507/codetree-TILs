@@ -9,22 +9,21 @@ public class Main {
                 
         Long rest = Long.parseLong(br.readLine());
         String[] customerArray = br.readLine().split(" ");
-        Long maxCustomer = 0L;
+        String[] validationArray = br.readLine().split(" ");
+        int answer = 0;
 
         for(String customer : customerArray) {
-            maxCustomer = Math.max(maxCustomer, Long.parseLong(customer));
+            if(Long.parseLong(customer) < Long.parseLong(validationArray[0]) || Long.parseLong(customer) == Long.parseLong(validationArray[0])) {
+                answer++;
+                // System.out.println(answer);
+            }else {
+                long oneTeam = ((Long.parseLong(customer) - Long.parseLong(validationArray[0])) / Long.parseLong(validationArray[1])) + 2;
+                // System.out.println(oneTeam);
+                answer = answer + (int) oneTeam;
+            }
         }
 
-        String[] validationArray = br.readLine().split(" ");        
-
-        if(maxCustomer < Long.parseLong(validationArray[0]) || maxCustomer == Long.parseLong(validationArray[0])) {
-            System.out.println(1);
-        } else {
-            long oneTeam = ((maxCustomer - Long.parseLong(validationArray[0])) / Long.parseLong(validationArray[1])) + 2;
-            System.out.println(oneTeam * rest);
-        }
-                
-
+        System.out.println(answer);
     
     }
 }
