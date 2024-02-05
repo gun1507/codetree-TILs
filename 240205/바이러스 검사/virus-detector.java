@@ -10,25 +10,24 @@ public class Main {
         Long rest = Long.parseLong(br.readLine());
         String[] customerArray = br.readLine().split(" ");
         String[] validationArray = br.readLine().split(" ");
-        int answer = 0;
+        long answer = 0;
 
         for(String customer : customerArray) {
             if(Long.parseLong(customer) < Long.parseLong(validationArray[0]) || Long.parseLong(customer) == Long.parseLong(validationArray[0])) {
                 answer++;
             }else {
+                answer++;
                 long diff = (Long.parseLong(customer) - Long.parseLong(validationArray[0]));
                 if(diff == Long.parseLong(validationArray[1])) {
-                    // System.out.println(answer + 2);
-                    answer = answer + 2;
+                    answer++;
                 }else {
-                    // System.out.println((diff / Long.parseLong(validationArray[1])) + 2);
-                    answer = answer + (int) (diff / Long.parseLong(validationArray[1])) + 2;
+                    answer += (diff / Long.parseLong(validationArray[1]));
+                    if(diff % Long.parseLong(validationArray[1]) != 0) {
+                        answer++;
+                    }
                 }
-                // long oneTeam = ((Long.parseLong(customer) - Long.parseLong(validationArray[0])) / Long.parseLong(validationArray[1])) + 2;
             }
-            // System.out.println(answer);
         }
-
         System.out.println(answer);
     
     }
