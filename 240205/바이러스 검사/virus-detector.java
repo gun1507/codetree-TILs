@@ -17,7 +17,7 @@ public class Main {
 
         String[] validationArray = br.readLine().split(" ");        
 
-        if(maxCustomer < Long.parseLong(validationArray[0])) {
+        if(maxCustomer < Long.parseLong(validationArray[0]) || maxCustomer == Long.parseLong(validationArray[0])) {
             System.out.println(1);
         } else {
             long oneTeam = ((maxCustomer - Long.parseLong(validationArray[0])) / Long.parseLong(validationArray[1])) + 2;
