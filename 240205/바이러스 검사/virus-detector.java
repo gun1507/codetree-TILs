@@ -15,12 +15,18 @@ public class Main {
         for(String customer : customerArray) {
             if(Long.parseLong(customer) < Long.parseLong(validationArray[0]) || Long.parseLong(customer) == Long.parseLong(validationArray[0])) {
                 answer++;
-                // System.out.println(answer);
             }else {
-                long oneTeam = ((Long.parseLong(customer) - Long.parseLong(validationArray[0])) / Long.parseLong(validationArray[1])) + 2;
-                // System.out.println(oneTeam);
-                answer = answer + (int) oneTeam;
+                long diff = (Long.parseLong(customer) - Long.parseLong(validationArray[0]));
+                if(diff == Long.parseLong(validationArray[1])) {
+                    // System.out.println(answer + 2);
+                    answer = answer + 2;
+                }else {
+                    // System.out.println((diff / Long.parseLong(validationArray[1])) + 2);
+                    answer = answer + (int) (diff / Long.parseLong(validationArray[1])) + 2;
+                }
+                // long oneTeam = ((Long.parseLong(customer) - Long.parseLong(validationArray[0])) / Long.parseLong(validationArray[1])) + 2;
             }
+            // System.out.println(answer);
         }
 
         System.out.println(answer);
