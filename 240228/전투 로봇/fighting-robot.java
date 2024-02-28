@@ -49,8 +49,9 @@ public class Main {
             // System.out.println("key : " + key);
             if(key < level) {
                 for(int[] endPoint : value) {
-                    answer = answer + bfs(startPoint, endPoint);
-                    killed++;
+                    int now = bfs(startPoint, endPoint);
+                    if(now == 0) break;
+                    answer = answer + now;
                     if(killed == level) {
                         level++; // 레벨업
                         killed = 0;
@@ -81,6 +82,7 @@ public class Main {
                 ) {
                     visit[node.x + dx[i]][node.y + dy[i]] = true;
                     if(node.x + dx[i] == endPoint[0] && node.y + dy[i] == endPoint[1]) {
+                        killed++;
                         return node.dist + 1;
                     }
                     q.offer(new Node(new int[]{node.x + dx[i], node.y + dy[i]}, node.dist + 1));
