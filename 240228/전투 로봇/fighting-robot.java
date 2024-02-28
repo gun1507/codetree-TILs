@@ -90,7 +90,7 @@ public class Main {
                 }
             }
         }
-        return -1;
+        return 0;
     }
 
     private static class Node {
